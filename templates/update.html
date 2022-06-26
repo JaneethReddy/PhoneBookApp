@@ -11,7 +11,10 @@
     <div class="form">
 
     <form action="/update/{{task.id}}" method="POST">
-        <input type="text" name="content" id="content" value="{{task.content}}">
+        <!-- <input type="text" name="content" id="content" value="{{task.content}}">   -->
+        <input type="text" name="content"  id="content" value="{{task.content}}">
+        <input type="text" name="last_name"  id="content" value="{{task.last_name}}"> 
+        <input type="tel"  name="phonenum" id="phonenum" value="{{task.phonenum}}"> 
         <input type="submit" value="Update">
     </form>
 </div>

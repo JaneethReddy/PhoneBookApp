@@ -15,7 +15,9 @@ db = SQLAlchemy(app)
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    last_name = db.Column(db.String(200), nullable=False)
+    # date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    phonenum = db.Column(db.String(200), nullable=False)
 
     def __repr__(self):
         return "<Task %r>" % self.id
@@ -23,8 +25,10 @@ class Todo(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        task_content = request.form['content']
-        new_task = Todo(content=task_content)
+        task_content = request.form['content'] 
+        last_name = request.form['last_name']
+        task_num = request.form['phonenum'] 
+        new_task = Todo(content=task_content, phonenum=task_num, last_name=last_name)
 
         try:
             db.session.add(new_task)
@@ -33,7 +37,7 @@ def index():
         except:
             return "There was an error while adding task"
     else:
-        tasks = Todo.query.order_by(Todo.date_created).all()
+        tasks = Todo.query.order_by(Todo.content).all()
         return render_template('index.html', tasks = tasks)
 
 @app.route('/delete/<int:id>')
@@ -52,6 +56,8 @@ def update(id):
     task = Todo.query.get_or_404(id)
     if request.method == 'POST':
         task.content = request.form['content']
+        task.phonenum = request.form['phonenum'] 
+        task.last_name = request.form['last_name']
         try:
            db.session.commit()
            return redirect('/')

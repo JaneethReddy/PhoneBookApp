@@ -1,38 +1,43 @@
 {% extends 'base.html' %}
-<title>Task Master </title>
+<title>Phone Book App</title>
 {% block head %}
 
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1>Task Master</h1>
+    <h1> <span><img src="data:image/png;base64,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" width ="40" ;height="50"></i></span>  Phone Book App</h1>
+    <form method="POST" action="/">
+        <input type="text" name="content" placeholder="First Name" id="content">
+        <input type="text" name="last_name" placeholder="Last Name" id="last_name">
+        <input type="tel" placeholder="PhoneNumber" name="phonenum" id="phonenum"> 
+        <input type="submit" value="Add New Contact" style="border-radius: 10px; background-color: rgba(47, 222, 126, 0.896); color:white"  >
+    </form>
     {% if tasks|length < 1 %}
-    <h4>There are no tasks currently</h4>
+    <h4>There are no contacts currently</h4>
     {% else %}
 
     <table>
         <tr>
-            <th>Task</th>
-            <th>Added</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Number</th>
             <th>Actions</th>
         </tr>
         {% for task in tasks %}
         <tr>
             <td>{{task.content}}</td>
-            <td>{{ task.date_created.date() }}</td>
+            <td>{{task.last_name}}</td>
+            <td><span><img src="https://png.pngtree.com/png-clipart/20180615/ourmid/pngtree-phone-icon-png-image_4589572.png" width ="20" ;height="20"></i></span> {{task.phonenum}}</td>
             <td>
-                <a href="/delete/{{task.id}}">Delete</a>
+                <a href="/delete/{{task.id}}" style="color: red">Delete</a>
                 <br>
-                <a href="/update/{{task.id}}">Update</a> 
+                <a href="/update/{{task.id}}" style="color: green">Update</a> 
             </td>
         </tr>
         {% endfor %}
     </table>
     {% endif %}
-    <form method="POST" action="/">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="Add Task">
-    </form>
+    
 </div>
 {% endblock %}
